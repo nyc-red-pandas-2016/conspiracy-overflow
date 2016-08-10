@@ -30,5 +30,17 @@ end
 
 get '/users/logout' do
   session.clear
+
   redirect '/'
+end
+
+get '/users' do
+#possible list of users.
+end
+
+get '/users/:id' do
+    # binding.pry
+  @user = User.find_by(id: params[:id])
+
+  erb :'users/show'
 end

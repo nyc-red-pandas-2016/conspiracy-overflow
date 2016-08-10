@@ -1,0 +1,16 @@
+          <li>
+            <div class="scores">
+              <span class="votes">votes: <%=question.votes.length%></span>
+              <span class="comments">comments: <%=question.comments.length%></span>
+            </div>
+            <div class="summery"> 
+              <h3> <a href="/questions/<%=question.id%>"><%=question.title%></a></h3>
+              <div class="listed_tags">
+                <ul>
+                  <% question.tags.each do |tag| %>
+                    <li><%=tag.name%></li>
+                  <%end%>
+                </ul>
+              </div>
+            </div>
+          </li>
