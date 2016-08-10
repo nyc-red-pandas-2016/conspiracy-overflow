@@ -1,0 +1,16 @@
+<div class='container'>
+
+  <form id="registration-form" action='/users' method="POST">
+    <label for='name'>Name:</label>
+    <input id="name" type='text' name='user[name]'/><br>
+    <label for='email'>Email:</label>
+    <input id="email" type='text' name='user[email]'/><br>
+    <label for='password'>Password:</label>
+    <input type='password' name='user[password]'/><br>
+    <input type='submit' value='Sign Up'/>
+
+  </form>
+
+  <ul id="registration-errors">
+  </ul>
+</div>
