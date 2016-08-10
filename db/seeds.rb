@@ -5,10 +5,10 @@ amir = User.create({name: "Amir", email: "amir@amir.amir", password: "password"}
 
 
 q = Question.new({title: "Help", body: "Where am I?"})
-q.tags << Tag.new({name: "#help"})
-q.tags << Tag.new({name: "#confused"})
-q.tags << Tag.new({name: "#tequila"})
-q.tags << Tag.new({name: "#whoami"})
+q.tags << Tag.new({name: "help"})
+q.tags << Tag.new({name: "confused"})
+q.tags << Tag.new({name: "tequila"})
+q.tags << Tag.new({name: "whoami"})
 elizabeth.questions << q
 q.votes << Vote.new({user_id: 1})
 q.votes << Vote.new({user_id: 4})

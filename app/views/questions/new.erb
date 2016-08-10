@@ -1,0 +1,16 @@
+<div class='container'>
+
+  <form id="question-form" action='/questions' method="POST">
+    <label for='title'>Title:</label>
+    <input id="title" type='text' name='question[title]'/><br>
+    <label for='body'>Description:</label>
+    <input id="body" type='text' name='question[body]'/><br>
+    <label for='tags'>Tags:</label>
+    <input id="tags" type='text' name='tags'/><br>
+    Note: Type list of tags separated by spaces<br>
+    <input type='submit' value='Create Question'/>
+  </form>
+
+  <ul id="question-form-errors">
+  </ul>
+</div>
