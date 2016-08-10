@@ -1,20 +1,12 @@
 <div class='container'>
-  
-  <% if @errors %>
-    <ul>
-      <% @errors.each do |error| %>
-      <li><%= error %></li>
-      <% end %>
-    </ul>
-  <% end %>
-  
+
   <form id="registration-form" action='/users' method="POST">
     <label for='name'>Name:</label>
-    <input type='text' name='user[name]' required='required'/><br>
+    <input id="name" type='text' name='user[name]'/><br>
     <label for='email'>Email:</label>
-    <input type='text' name='user[email]' required='required'/><br>
+    <input id="email" type='text' name='user[email]'/><br>
     <label for='password'>Password:</label>
-    <input type='password' name='user[password]' required='required'/><br>
+    <input type='password' name='user[password]'/><br>
     <input type='submit' value='Sign Up'/>
 
   </form>

@@ -5,9 +5,9 @@ $(document).ready(function() {
     $( "#registration-errors" ).html("");
 
     var errors = new Array();
-    var name = $( "input[name=name]" ).val();
-    var email = $( "input[name=email]" ).val();
-    var password = $( "input[name=password]" ).val();
+    var name = $( "input[id=name]" ).val();
+    var email = $( "input[id=email]" ).val();
+    var password = $( "input[type=password]" ).val();
 
     if (password.length < 6) {
       errors.push('<li>Password too short.</li>')
@@ -15,7 +15,7 @@ $(document).ready(function() {
     if (!(/\d/.test(password))) {
       errors.push('<li>Password must contain at least one number.</li>')
     }
-    if (!(/[A-Z]/.` (password))) {
+    if (!(/[A-Z]/.test(password))) {
       errors.push('<li>Password must contain at least one capital letter.</li>')
     }
     if (!(/\w+@\w+\.[a-zA-Z]{2,3}/.test(email))) {
