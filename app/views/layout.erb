@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -15,9 +15,27 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Drunken Conspiracy Overflow</title>
 </head>
 <body>
-  <%= yield %>
+  <header>
+    <div class="top-bar">
+      <nav id="nav">
+          <ul class="nav-list">
+            <li><a class="btn btn-nav" href="/login">Login</a></li>
+            <li><a class="btn btn-nav" href="/register">Register</a></li>
+            <li><a class="btn btn-nav" href="/">home</a></li>
+          </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </main>
+  <footer id="footer">
+    <p>copyright &copy; Drunken Stackoverflow</p>
+  </footer>
 </body>
 </html>
