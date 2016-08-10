@@ -1,7 +1,10 @@
 <div class="questions">
   <h2><%= @question.title %></h2>
   Author: <%= @author.name %><br>
-  Question: <%= @question.body %><br><br>
+  Description: <%= @question.body %><br><br>
+  Tags: <% @question.tags.each do |t| %>
+      #<%= t.name %><br>
+    <% end %>
   <strong>Comments</strong><br>
   <div class="comments">
     <% @question.comments.each do |c| %>
