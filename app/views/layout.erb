@@ -22,8 +22,13 @@
     <div class="top-bar">
       <nav id="nav">
           <ul class="nav-list">
-            <li><a class="btn btn-nav" href="/users/login">Login</a></li>
-            <li><a class="btn btn-nav" href="/users/new">Register</a></li>
+            <% if current_user %>
+              <li><a class="btn btn-nav" href="/users/<%= current_user.id %>">View Account</a></li>
+              <li><a class="btn btn-nav" href="/users/logout">Logout</a></li>
+            <% else %>
+              <li><a class="btn btn-nav" href="/users/login">Login</a></li>
+              <li><a class="btn btn-nav" href="/users/new">Register</a></li>
+            <% end %>
             <li><a class="btn btn-nav" href="/">home</a></li>
           </ul>
       </nav>

@@ -39,8 +39,10 @@ get '/users' do
 end
 
 get '/users/:id' do
-    # binding.pry
-  @user = User.find_by(id: params[:id])
-
-  erb :'users/show'
+  if current_user
+    @user = User.find_by(id: params[:id])
+    erb :'users/show'
+  else
+    redirect '/users/login'
+  end
 end
