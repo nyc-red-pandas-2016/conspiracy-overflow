@@ -1,22 +1,27 @@
-<div>
-<h2><%= @question.title %></h2>
-Author: <%= @author.name %><br>
-Question: <%= @question.body %><br><br>
-<strong>Comments</strong><br>
-<% @question.comments.each do |c| %>
-  Author: <%= User.find(c.user_id).name %><br>
-  Comment: <%= c.body %><br><br>
-<% end %>
--------------------------------------<br>
-
-<% @answers.each do |a| %>
-  Author: <%= User.find(a.user_id).name %><br>
-  Answer: <%= a.body %><br><br>
+<div class="questions">
+  <h2><%= @question.title %></h2>
+  Author: <%= @author.name %><br>
+  Question: <%= @question.body %><br><br>
   <strong>Comments</strong><br>
-  <% a.comments.each do |c| %>
-    Author: <%= User.find(c.user_id).name %><br>
-    Comment: <%= c.body %><br><br>
+  <div class="comments">
+    <% @question.comments.each do |c| %>
+      Author: <%= User.find(c.user_id).name %><br>
+      Comment: <%= c.body %><br><br>
+    <% end %>
+  </div>
+</div>
+-------------------------------------<br>
+<div class="answers">
+  <% @answers.each do |a| %>
+    Author: <%= User.find(a.user_id).name %><br>
+    Answer: <%= a.body %><br><br>
+    <strong>Comments</strong><br>
+    <div class="comments">
+      <% a.comments.each do |c| %>
+        Author: <%= User.find(c.user_id).name %><br>
+        Comment: <%= c.body %><br><br>
+      <% end %>
+    </div>
+    -------------------------------------<br>
   <% end %>
-  -------------------------------------<br>
-<% end %>
-<div>
+</div>
