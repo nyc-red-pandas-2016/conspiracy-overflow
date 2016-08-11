@@ -1,0 +1,5 @@
+    <form class="answers-form" action="/answers" method="POST">
+      <input type="text" name="answer[body]">
+      <input type="hidden" name="answer[question_id]" value="<%= question.id %>">
+      <input type="submit" name="answer-button" value="Answer">
+    </form>
