@@ -28,3 +28,13 @@ end
 get '/session' do
   session.inspect
 end
+
+post '/votes' do
+  # binding.pry
+  votable_id = params[:vote][:votable_id].to_i
+  unless Vote.find_by({user_id: current_user.id, votable_id: votable_id})
+    current_user.votes << Vote.new(params[:vote])
+    redirect '/'
+  end
+  redirect '/'
+end

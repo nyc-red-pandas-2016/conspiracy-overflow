@@ -12,6 +12,7 @@
           <%= erb :'/questions/_answers_form', locals:{question: @question}%>
                <!-- FORM FOR COMMENTS WILL GO HERE -->
           <%= erb :'/questions/_comments_form', locals:{commentable: @question, question_id: @question.id}%>
+          Votes: <%= @question.votes.length %><%= erb :'/_votes_form', locals:{votable: @question}%>
       </div>
       <!-- comment on questions  -->
       <div class="question-comments">
@@ -22,6 +23,8 @@
            <div class="author">
              <em>  Author: <%= User.find(c.user_id).name %></em>
            </div>
+           Votes: <%= c.votes.length %>
+           <%= erb :'/_votes_form', locals:{votable: c}%>
          </div>
         <% end %>
       </div>
@@ -37,6 +40,7 @@
       </div>
         <!-- form to comment on answer -->
         <%= erb :'/questions/_comments_form', locals:{commentable: a, question_id: a.question.id}%>
+        Votes: <%= a.votes.length %><%= erb :'/_votes_form', locals:{votable: a}%>
 <!-- comment on answer -->
       <div class="answer-comments">
         <h4 class="comments-title">Comments</h4>
@@ -46,6 +50,7 @@
         <div class="author">
           <em>Author: <%= User.find(c.user_id).name %></em>
         </div>
+        Votes: <%= c.votes.length %><%= erb :'/_votes_form', locals:{votable: c}%>
         </div>
         <% end %>
       </div>

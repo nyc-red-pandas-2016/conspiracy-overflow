@@ -6,6 +6,7 @@ body{
     font-size:16px;
     background-color:#f9f9f9;
 }
+
 main{
     /*padding:20px;*/
 }
@@ -279,6 +280,15 @@ ul{
     -moz-border-bottom: 1px dashed #f99898;
     border-bottom: 1px dashed #f99898;
 }
+
+/*votes*/
+.votes-form button {
+    outline:0px;
+    background-color: transparent;
+    border:0px;
+    color: #ec5903;
+}
+
 /*footer*/
 #footer{
   text-align: center;
@@ -286,3 +296,4 @@ ul{
   padding:20px;
 
 }
+
