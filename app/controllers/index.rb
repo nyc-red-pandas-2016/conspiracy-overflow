@@ -17,8 +17,9 @@ end
 post '/answers' do
   @answer = Answer.new(params[:answer])
   @answer.user_id = session[:user_id]
+    p params
   if @answer.save
-    redirect "/questions/#{params[:question_id]}"
+    redirect "/questions/#{params[:answer][:question_id]}"
   else
     #display errors
   end
