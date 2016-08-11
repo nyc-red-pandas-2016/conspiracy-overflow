@@ -1,0 +1,5 @@
+    <form class="votes-form" action="/votes" method="POST">
+      <input type="hidden" name="vote[votable_id]" value="<%= votable.id %>">
+      <input type="hidden" name="vote[votable_type]" value="<%= votable.class %>">
+      <button type="submit" name="vote-button" value="Vote"><i class="fa fa-glass" aria-hidden="true"></i></button>
+    </form>
