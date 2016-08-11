@@ -5,23 +5,26 @@ end
 
 post '/comments' do
   @comment = Comment.new(params[:comment])
+
   @comment.user_id = session[:user_id]
-  p params
-  if @comment.save
-    redirect "/questions/#{params[:question_id]}"
+  @comment.save
+  # binding.pry
+  if request.xhr?
+    erb :'/questions/_comment', locals:{c: @comment}, layout: false
   else
-    #display errors
+    redirect "/questions/#{params[:question_id]}"
   end
 end
 
 post '/answers' do
   @answer = Answer.new(params[:answer])
   @answer.user_id = session[:user_id]
-    p params
-  if @answer.save
-    redirect "/questions/#{params[:answer][:question_id]}"
+  @answer.save
+  # binding.pry
+  if request.xhr?
+    erb :'/questions/_answer', locals:{a: @answer}, layout: false
   else
-    #display errors
+    redirect "/questions/#{params[:answer][:question_id]}"
   end
 end
 

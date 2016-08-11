@@ -65,10 +65,10 @@ $(document).ready(function() {
 
 
   $(".show-comments-form-button").on("click", function(e){
-    debugger;
-    $(".comments-form").show();
+    // debugger;
+    $(this).parent().find(".comments-form").show();
 
-    // $(".comments-form").focus();
+    $(this).parent().find(".comments-form textarea").focus();
 
     $(".show-comments-form-button").hide();
     $(".show-answers-form-button").hide();
@@ -76,7 +76,7 @@ $(document).ready(function() {
 
 
 
-  $(".comments-form").focusout(function(){
+  $(".comments-form").submit(function(){
     $(".comments-form").hide();
     $(".show-answers-form-button").show();
     $(".show-comments-form-button").show();
@@ -89,11 +89,29 @@ $(document).ready(function() {
     $(".show-comments-form-button").hide();
   });
 
-    $(".answers-form").focusout(function(){
+    $(".answers-form").submit(function(){
     $(".answers-form").hide();
     $(".show-answers-form-button").show();
     $(".show-comments-form-button").show();
   });
+
+  $(".answers-form").submit(function(e){
+    e.preventDefault();
+    var ourForm = e.target
+      // debugger;
+      values = $(e.target).serialize()
+    $.ajax({
+      url: $(e.target).attr("action"),
+      type: $(e.target).attr("method"),
+      data: values
+    }).done(function(response) {
+      // debugger;
+      $(ourForm).closest(".contain").find(".answers").append(response);
+      $(".answers-form textarea").val("");
+    });
+  });
+
+
 
 
 });
