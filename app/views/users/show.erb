@@ -2,11 +2,9 @@
   <h2> <%= @user.name %> </h2>
      <!-- binding.pry -->
     <div class="header_tab"><h4>Questions</h4>
-      <ul id="questions_list">
         <% @user.questions.each do |question| %>
           <%= erb :'_question_list_item', locals: {question: question} %>
         <%end%>
-      </ul>
     </div>
 
     <div class="header_tab"><h4>Answers</h4>
@@ -14,10 +12,10 @@
         <% @user.answers.each do |answer| %>
           <li>
             <div class="scores">
-              <span class="votes">votes: <%=answer.votes.length%></span>
               <span class="comments">comments: <%=answer.comments.length%></span>
+              <span class="votes">votes: <%=answer.votes.length%></span>
             </div>
-            <div class="summery"> 
+            <div class="summery">
               <h3> <a href="/questions/<%= answer.id %>">Answered '<%=answer.question.title%>'</a></h3>
             </div>
           </li>

@@ -1,1 +1,25 @@
-
+<div class="home panel-wrap">
+  <div class="welcome panel-inner ">
+    <%if current_user%>
+      <h1><%= current_user.name%></h1>
+      <p>Brief description or something</p>
+      <div class="stats">
+          <div class="info-circle orange">
+            <span><%= current_user.questions.length%></span><p>Questions</p>
+           </div>
+      </div>
+    <%else%>
+    <h1 class="">welcome</h1>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, <br>when an unknown printer took a galley<br> of type and scrambled it to make a type specimen book.</p>
+    <a class="btn register" href="/users/new">Register</a>
+    <a class="btn login" href="/users/login">Login</a>
+    <%end%>
+  </div>
+</div>
+<div class="contain">
+  <div class="container">
+    <% @questions.each do |question|%>
+    <%= erb :"_question_list_item", locals:{question:question} %>
+    <%end%>
+  </div>
+</div>
