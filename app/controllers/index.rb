@@ -9,10 +9,8 @@ end
 
 post '/comments' do
   @comment = Comment.new(params[:comment])
-
   @comment.user_id = session[:user_id]
   @comment.save
-  # binding.pry
   if request.xhr?
     erb :'/questions/_comment', locals:{c: @comment}, layout: false
   else
@@ -24,7 +22,6 @@ post '/answers' do
   @answer = Answer.new(params[:answer])
   @answer.user_id = session[:user_id]
   @answer.save
-  # binding.pry
   if request.xhr?
     erb :'/questions/_answer', locals:{a: @answer}, layout: false
   else
@@ -37,11 +34,8 @@ get '/session' do
 end
 
 post '/votes' do
-  # binding.pry
-  votable_id = params[:vote][:votable_id].to_i
-  unless Vote.find_by({user_id: current_user.id, votable_id: votable_id})
+  params[:vote][:user_id] = current_user.id
+  unless Vote.find_by(params[:vote])
     current_user.votes << Vote.new(params[:vote])
-    redirect '/'
   end
-  redirect '/'
 end
