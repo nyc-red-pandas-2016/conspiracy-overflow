@@ -8,6 +8,7 @@ end
 
 post '/questions' do
   q = Question.new(params[:question])
+  q.title.downcase!
   tags = params[:tags].split(" ")
   tags.each do |t|
     if Tag.find_by(name: t)

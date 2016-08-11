@@ -5,6 +5,7 @@ amir = User.create({name: "Amir", email: "amir@amir.amir", password: "password"}
 
 
 q = Question.new({title: "Help", body: "Where am I?"})
+q.title.downcase!
 q.tags << Tag.new({name: "help"})
 q.tags << Tag.new({name: "confused"})
 q.tags << Tag.new({name: "tequila"})
@@ -23,5 +24,3 @@ q.comments << c
 a.comments << Comment.new({user_id: 4, body: "I am at home."})
 
 c.votes << Vote.new({user_id: 1})
-
-

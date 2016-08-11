@@ -138,6 +138,7 @@ ul{
   }
  /*question list homepage*/
  .question-title a{
+  text-transform:capitalize;
    display:inline-block;
    text-decoration: none;
    color:#747777;
@@ -187,6 +188,7 @@ ul{
   margin-bottom:20px;
 }
 .question-title.show{
+  text-transform:capitalize;
   margin:0px 0px 15px 0px;
   border-bottom: 1px solid #eee;
   padding-bottom: 10px;
@@ -281,6 +283,34 @@ ul{
     border-bottom: 1px dashed #f99898;
 }
 
+/*search bar*/
+.search-bar {
+
+    background-color: rgba(255,255,255,.3);
+    padding: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 3px;
+}
+
+#search input{
+    color:#333;
+    outline:0px;
+    float:left;
+    padding:10px;
+    border:0px;
+    width:80%;
+}
+
+#search button{
+    outline:0px;
+    background-color: #54c16c;
+    padding:10px;
+    width:20%;
+    border:0px;
+    margin:0px;
+}
+
 /*votes*/
 .votes-form button {
     outline:0px;
@@ -296,4 +326,3 @@ ul{
   padding:20px;
 
 }
-
