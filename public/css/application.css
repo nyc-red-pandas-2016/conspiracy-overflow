@@ -333,5 +333,45 @@ ul{
   text-align: center;
   color: #999;
   padding:20px;
+}
 
+.tab-content {
+  display: none;
+}
+
+.tabs {
+  float: left;
+  width: 100%;
+  margin-bottom: 5%;
+  list-style: none;
+}
+.tabs li {
+  float: left;
+  margin-right: 16px;
+  height: 30px;
+}
+
+.tabs li.active {
+  border: 1px solid #ccc;
+  border-bottom: 1px solid white;
+  margin-bottom: -1px;
+  height: 31px;
+  padding: 9px 14px;
+  color: green;
+}
+
+#center-profile-buttons {
+  width: 70%;
+  margin: auto;
+}
+
+#center-profile-content {
+  width: 40%;
+  margin: auto;
+}
+
+.smaller-panel {
+  min-height:200px;
+  background-color: lightblue;
+  color: black;
 }
