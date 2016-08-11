@@ -225,6 +225,15 @@ ul{
     margin-left: 100px;
 }
 
+.answers-form{
+  display: none;
+}
+
+.comments-form{
+  display: none;
+}
+
+
 /*login form*/
 .form-wrap {
     max-width: 400px;

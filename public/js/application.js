@@ -64,4 +64,36 @@ $(document).ready(function() {
 //Ajaxing the replays to a question
 
 
+  $(".show-comments-form-button").on("click", function(e){
+    debugger;
+    $(".comments-form").show();
+
+    // $(".comments-form").focus();
+
+    $(".show-comments-form-button").hide();
+    $(".show-answers-form-button").hide();
+  });
+
+
+
+  $(".comments-form").focusout(function(){
+    $(".comments-form").hide();
+    $(".show-answers-form-button").show();
+    $(".show-comments-form-button").show();
+  });
+
+  $(".show-answers-form-button").on("click", function(){
+    $(".answers-form").show();
+    // $(".answers-form").focus();
+    $(".show-answers-form-button").hide();
+    $(".show-comments-form-button").hide();
+  });
+
+    $(".answers-form").focusout(function(){
+    $(".answers-form").hide();
+    $(".show-answers-form-button").show();
+    $(".show-comments-form-button").show();
+  });
+
+
 });
