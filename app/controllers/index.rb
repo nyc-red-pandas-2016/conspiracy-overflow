@@ -1,6 +1,10 @@
 get '/' do
-  @questions = Question.all
+  @questions = Question.search(params[:search])
   erb :"index"
+end
+
+post '/search' do
+  redirect "/?search=#{params[:search][:input]}"
 end
 
 post '/comments' do

@@ -8,7 +8,22 @@ class Question < ActiveRecord::Base
 
   validates :title, :body, presence: :true
 
+  before_save :downcase_title
+
+
   def best_answer
     self.answers.find(self.best_answer_id)
+  end
+
+  def self.search(search)
+    if search
+      where(["title LIKE ?","%#{search}%"])
+    else
+      all
+    end
+  end
+
+  def downcase_title
+    self.title.downcase
   end
 end

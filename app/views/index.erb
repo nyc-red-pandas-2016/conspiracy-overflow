@@ -3,6 +3,7 @@
     <%if current_user%>
       <h1><%= current_user.name%></h1>
       <p>Brief description or something</p>
+        <%= erb :'_search'%>
       <div class="stats">
           <div class="info-circle orange">
             <span><%= current_user.questions.length%></span><p>Questions</p>
@@ -10,16 +11,20 @@
       </div>
     <%else%>
     <h1 class="">welcome</h1>
+  <%= erb :'_search'%>
     <p>People trust DrunkOverflow to help solve  problems <br> and find answers. We’re committed to making the world<br> a better place, and our site aims to enrich people's lives <br>as we grow and mature.</p>
-    <a class="btn register" href="/users/new">Register</a>
-    <a class="btn login" href="/users/login">Login</a>
+    <!-- <a class="btn register" href="/users/new">Register</a>
+    <a class="btn login" href="/users/login">Login</a> -->
     <%end%>
   </div>
 </div>
 <div class="contain">
   <div class="container">
+
+
     <% @questions.each do |question|%>
     <%= erb :"_question_list_item", locals:{question:question} %>
     <%end%>
+
   </div>
 </div>
