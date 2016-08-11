@@ -84,7 +84,7 @@ $(document).ready(function() {
 
   $(".show-answers-form-button").on("click", function(){
     $(".answers-form").show();
-    // $(".answers-form").focus();
+    $(this).parent().find(".answers-form textarea").focus();
     $(".show-answers-form-button").hide();
     $(".show-comments-form-button").hide();
   });
