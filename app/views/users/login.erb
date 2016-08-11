@@ -1,19 +1,22 @@
-<div class='container'>
-  <% if @errors %>
+<div class='contain'>
+  <div class="form-wrap">
+    <% if @errors %>
     <ul>
       <% @errors.each do |error| %>
       <li><%= error %></li>
       <% end %>
     </ul>
-  <% end %>
+    <% end %>
 
-  <form action="/users/login" method="POST">
-    <label for='email'>Email:</label>
-    <input type='text' name='user[email]' required='required'/><br>
-    <label for='password'>Password:</label>
-    <input type='password' name='user[password]' required='required'/><br>
-    <input type='submit' value='Sign In'/>
-    
-  </form>
+    <form id="login" action="/users/login" method="POST">
+      <div class="text-field">
+        <!-- <label for='email'>Email:</label> -->
+      <input type='text' name='user[email]' required='required' placeholder="Email"/></div>
+      <div class="text-field">
+        <!-- <label for='password'>Password:</label> -->
+      <input type='password' name='user[password]' required='required' placeholder="Password"/></div>
+      <input type='submit' value='Sign In'/>
+    </form>
+  </div>
 
 </div>

@@ -15,6 +15,7 @@ gem 'rake'
 gem 'shotgun'
 
 gem 'bcrypt'
+gem 'thin'
 
 gem 'pry'
 

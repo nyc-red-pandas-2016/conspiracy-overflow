@@ -1,7 +1,11 @@
 $(document).ready(function() {
 
+  var $errorsRegister = $("#registration-errors");
+  $errorsRegister.hide()
+
   //user-side validation for creating a user
   $( "#registration-form" ).submit(function( event ) {
+      $errorsRegister.show('slow');
     $( "#registration-errors" ).html("");
 
     var errors = new Array();

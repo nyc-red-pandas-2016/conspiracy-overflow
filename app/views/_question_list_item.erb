@@ -1,16 +1,34 @@
-          <li>
-            <div class="scores">
-              <span class="votes">votes: <%=question.votes.length%></span>
-              <span class="comments">comments: <%=question.comments.length%></span>
-            </div>
-            <div class="summery"> 
-              <h3> <a href="/questions/<%=question.id%>"><%=question.title%></a></h3>
-              <div class="listed_tags">
-                <ul>
-                  <% question.tags.each do |tag| %>
-                    <li><%=tag.name%></li>
-                  <%end%>
-                </ul>
-              </div>
-            </div>
-          </li>
+<ul class="questions_list">
+  <li>
+    <div class="col-group home-questions">
+      <div class="col-1">
+        <div class="scores-wrap">
+          <table class="scores">
+              <tr>
+                <td class="votes">
+              <span><%=question.votes.length%><span>
+              <p>votes</p>
+                </td>
+                <td class="comments">
+                <span><%=question.comments.length%></span>
+                  <p>comments</p>
+                </td>
+              </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="summery">
+          <h3 class="question-title"> <a href="/questions/<%=question.id%>"><%=question.title%></a></h3>
+          <div class="listed_tags">
+            <ul>
+              <% question.tags.each do |tag| %>
+                <li><%=tag.name%></li>
+              <%end%>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+<ul>
