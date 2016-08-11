@@ -1,5 +1,8 @@
+    <button class="show-answers-form-button">Answer</button>
+
+
     <form class="answers-form" action="/answers" method="POST">
-      <input type="text" name="answer[body]">
+      <textarea rows="4" cols="50" name="answer[body]" placeholder="Type your answers here..."></textarea>
       <input type="hidden" name="answer[question_id]" value="<%= question.id %>">
       <input type="submit" name="answer-button" value="Answer">
     </form>

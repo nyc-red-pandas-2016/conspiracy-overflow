@@ -64,4 +64,54 @@ $(document).ready(function() {
 //Ajaxing the replays to a question
 
 
+  $(".show-comments-form-button").on("click", function(e){
+    // debugger;
+    $(this).parent().find(".comments-form").show();
+
+    $(this).parent().find(".comments-form textarea").focus();
+
+    $(".show-comments-form-button").hide();
+    $(".show-answers-form-button").hide();
+  });
+
+
+
+  $(".comments-form").submit(function(){
+    $(".comments-form").hide();
+    $(".show-answers-form-button").show();
+    $(".show-comments-form-button").show();
+  });
+
+  $(".show-answers-form-button").on("click", function(){
+    $(".answers-form").show();
+    // $(".answers-form").focus();
+    $(".show-answers-form-button").hide();
+    $(".show-comments-form-button").hide();
+  });
+
+    $(".answers-form").submit(function(){
+    $(".answers-form").hide();
+    $(".show-answers-form-button").show();
+    $(".show-comments-form-button").show();
+  });
+
+  $(".answers-form").submit(function(e){
+    e.preventDefault();
+    var ourForm = e.target
+      // debugger;
+      values = $(e.target).serialize()
+    $.ajax({
+      url: $(e.target).attr("action"),
+      type: $(e.target).attr("method"),
+      data: values
+    }).done(function(response) {
+      // debugger;
+      $(ourForm).closest(".contain").find(".answers").append(response);
+      $(".answers-form textarea").val("");
+    });
+  });
+
+
+
+
 });

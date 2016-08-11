@@ -16,45 +16,24 @@
       </div>
       <!-- comment on questions  -->
       <div class="question-comments">
+
         <h4 class="comments-title">Comments</h4>
-        <% @question.comments.each do |c| %>
-         <div class="comment-body">
-           <p><%= c.body %></p>
-           <div class="author">
-             <em>  Author: <%= User.find(c.user_id).name %></em>
-           </div>
-           Votes: <%= c.votes.length %>
-           <%= erb :'/_votes_form', locals:{votable: c}%>
-         </div>
-        <% end %>
+          <div class="all_comments">
+          <% @question.comments.each do |c| %>
+            <%= erb :'/questions/_comment', locals:{c: c}%>
+          <% end %>
+        </div>
       </div>
+
     </div>
 
   <!-- question answers -->
   <h3 class="answers-title">Answers</h3>
   <div class="answers">
     <% @answers.each do |a| %>
-      <div class="answer-body"><%= a.body %></div>
-      <div class="author">
-        <em>  Author: <%= User.find(a.user_id).name %></em>
-      </div>
-        <!-- form to comment on answer -->
-        <%= erb :'/questions/_comments_form', locals:{commentable: a, question_id: a.question.id}%>
-        Votes: <%= a.votes.length %><%= erb :'/_votes_form', locals:{votable: a}%>
-<!-- comment on answer -->
-      <div class="answer-comments">
-        <h4 class="comments-title">Comments</h4>
-        <% a.comments.each do |c| %>
-        <div class="comment-body">
-        <p> <%= c.body %></p>
-        <div class="author">
-          <em>Author: <%= User.find(c.user_id).name %></em>
-        </div>
-        Votes: <%= c.votes.length %><%= erb :'/_votes_form', locals:{votable: c}%>
-        </div>
-        <% end %>
-      </div>
+    <%=erb :'/questions/_answer', locals:{a: a} %>
     <% end %>
+    </div>
   </div>
 </div>
 
