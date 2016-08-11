@@ -63,6 +63,13 @@ $(document).ready(function() {
 
 //Ajaxing the replays to a question
 
+  $( ".tab-button" ).click(function(event) {
+    $( ".tab-content" ).hide();
+    event.preventDefault();
+    tab_name = event.target.hash;
+    id_to_show = event.target.classList[2];
+    $( "#" + id_to_show).show();
+  });
 
   $(".show-comments-form-button").on("click", function(e){
     // debugger;

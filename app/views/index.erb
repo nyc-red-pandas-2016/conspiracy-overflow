@@ -2,8 +2,8 @@
   <div class="welcome panel-inner ">
     <%if current_user%>
       <h1><%= current_user.name%></h1>
-      <p>Brief description or something</p>
-        <%= erb :'_search'%>
+      <p>Great to see you today! <br> Peruse below to check out some great questions.<br> Maybe answer some of those questions.<br><br><('.'<) <('.'^) (^'.')> (>'.')> </p>
+      <%= erb :'_search'%>
       <div class="stats">
           <div class="info-circle orange">
             <span><%= current_user.questions.length%></span><p>Questions</p>
