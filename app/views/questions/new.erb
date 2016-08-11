@@ -1,16 +1,14 @@
-<div class='container'>
+<div class='contain'>
+  <div class="form-wrap">
+    <form id="question-form" action='/questions' method="POST">
+      <input id="title" type='text' name='question[title]' placeholder="Title"/><br><br>
+      <input id="body" type='text' name='question[body]' placeholder="Description"/><br><br>
+      <input id="tags" type='text' name='tags' placeholder="Tags"/><br><br>
+      Note: Type list of tags separated by spaces<br><br>
+      <input type='submit' value='Create Question'/>
+    </form>
 
-  <form id="question-form" action='/questions' method="POST">
-    <label for='title'>Title:</label>
-    <input id="title" type='text' name='question[title]'/><br>
-    <label for='body'>Description:</label>
-    <input id="body" type='text' name='question[body]'/><br>
-    <label for='tags'>Tags:</label>
-    <input id="tags" type='text' name='tags'/><br>
-    Note: Type list of tags separated by spaces<br>
-    <input type='submit' value='Create Question'/>
-  </form>
-
-  <ul id="question-form-errors">
-  </ul>
+    <ul id="question-form-errors">
+    </ul>
+  </div>
 </div>
