@@ -45,7 +45,6 @@ $(document).ready(function() {
 
 //comment form on answers
       $(".answers").on("submit", ".comments-form" ,function(e){
-    debugger;
     e.preventDefault();
     var ourForm = e.target
       values = $(e.target).serialize()
@@ -72,7 +71,6 @@ $(document).ready(function() {
       type: $(e.target).attr("method"),
       data: values
     }).done(function(response) {
-    debugger;
       $(ourForm).closest(".question").find(".all_comments").append(response);
       $(".comments-form textarea").val("");
       $(".comments-form").hide();

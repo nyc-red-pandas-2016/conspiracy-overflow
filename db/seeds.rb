@@ -34,8 +34,26 @@ q.answers << Answer.new({user_id: 4, body: "I always think that."})
 q.comments << Comment.new({user_id: 2, body: "I don't even know where I am"})
 
 q = Question.new({title: "Why?", body: "Really tho."})
+q.tags << Tag.find_by(name: "tequila")
+q.tags << Tag.new({name: "philosophy"})
 q.title.downcase!
 dave.questions << q
 a = Answer.new({user_id: 3, body: "Dave you're drunk"})
 q.answers << a
 a.comments << Comment.new({user_id: 2, body: "Wolfgang you're drunk too"})
+
+q = Question.new({title: "Tearin up my heart?", body: "It's tearin up my heart when I'm with you. But when we are apart, I feel it too. And no matter what I do I feel the same? I feel the pain?"})
+q.title.downcase!
+q.tags << Tag.find_by(name: "tequila")
+q.tags << Tag.new({name: "backstreetsbackALRIGHT"})
+elizabeth.questions << q
+q.answers << Answer.new({user_id: 4, body: "I want it that way"})
+q.comments << Comment.new({user_id: 2, body: "You are my fire"})
+q.comments << Comment.new({user_id: 1, body: "My one desire"})
+a = Answer.new({user_id: 4, body: "Dirty pop"})
+q.answers << Answer.new({user_id: 1, body: "I don't care who you are. Where you been. Don't care what you did. As long as you love me"})
+q.answers << Answer.new({user_id: 3, body: "Show me the meaning of being lonely."})
+a = Answer.new({user_id: 2, body: "It's gonna be may"})
+q.answers << a
+a.comments << Comment.new({user_id: 2, body: "**me"})
+a = Answer.new({user_id: 4, body: "Dirty pop"})
