@@ -34,8 +34,21 @@ get '/session' do
 end
 
 post '/votes' do
-  params[:vote][:user_id] = current_user.id
-  unless Vote.find_by(params[:vote])
-    current_user.votes << Vote.new(params[:vote])
+  if request.xhr?
+    params[:vote][:user_id] = current_user.id
+    votable = nil
+    if params[:vote][:votable_type] == "Question"
+      votable = Question.find(params[:vote][:votable_id])
+    elsif params[:vote][:votable_type] == "Answer"
+      votable = Answer.find(params[:vote][:votable_id])
+    elsif params[:vote][:votable_type] == "Comment"
+      votable = Comment.find(params[:vote][:votable_id])
+    end
+    if Vote.find_by(params[:vote])
+      "already voted"
+    else
+      current_user.votes << Vote.new(params[:vote])
+      votable.votes.length
+    end
   end
 end

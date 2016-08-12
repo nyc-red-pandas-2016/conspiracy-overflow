@@ -2,21 +2,19 @@
 <!-- question -->
     <div class="question">
       <h2 class="question-title show"><%= @question.title %></h2>
+      Votes: <div class="votes-number-Question-<%= @question.id %>"><%= @question.votes.length %></div><%= erb :'/_votes_form', locals:{votable: @question}%>
       <div class="question-body">
           <%= @question.body %>
         <div class="author">
           <em>Author: <%= @author.name %></em>
         </div>
-           Question: <%= @question.body %><br><br>
-              <!-- FORM FOR CREATED NEW ANSWERS WILL GO HERE -->
-          <%= erb :'/questions/_answers_form', locals:{question: @question}%>
-               <!-- FORM FOR COMMENTS WILL GO HERE -->
-          <%= erb :'/questions/_comments_form', locals:{commentable: @question, question_id: @question.id}%>
-          Votes: <%= @question.votes.length %><%= erb :'/_votes_form', locals:{votable: @question}%>
+          <% if current_user %>
+            <%= erb :'/questions/_answers_form', locals:{question: @question}%>
+            <%= erb :'/questions/_comments_form', locals:{commentable: @question, question_id: @question.id}%>
+          <% end %>
       </div>
       <!-- comment on questions  -->
       <div class="question-comments">
-
         <h4 class="comments-title">Comments</h4>
           <div class="all_comments">
           <% @question.comments.each do |c| %>

@@ -8,12 +8,12 @@
         <%= erb :'/questions/_comments_form', locals:{commentable: a, question_id: a.question.id}%>
         Votes: <%= a.votes.length %><%= erb :'/_votes_form', locals:{votable: a}%>
 <!-- comment on answer -->
-      <div class="answer-comments">
-        <h4 class="comments-title">Comments</h4>
-        <div class="all_comments">
-        <% a.comments.each do |c| %>
-          <%= erb :'/questions/_comment', locals:{c: c}%>
-        <% end %>
+        <div class="answer-comments">
+          <h4 class="comments-title">Comments</h4>
+          <div class="all_comments">
+          <% a.comments.each do |c| %>
+            <%= erb :'/questions/_comment', locals:{c: c}%>
+          <% end %>
+          </div>
         </div>
-      </div>
     </div>
