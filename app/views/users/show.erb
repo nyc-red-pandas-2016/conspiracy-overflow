@@ -1,144 +1,147 @@
-<div id="user_profile">
-
-  <div class="home panel-wrap">
-    <div class="welcome panel-inner smaller-panel">
-      <h1 class="">Hi, <%= current_user.name %></h1>
-      <p>Click below to check out your previous activity</p>
-    </div>
+<div class="home panel-wrap">
+  <div class="welcome panel-inner smaller-panel">
+    <h1 class="">Hi, <%= current_user.name %></h1>
+    <p>Click below to check out your previous activity</p>
   </div>
+</div>
+<div class="contain">
+  <div id="user_profile">
 
-  <div id="center-profile-buttons">
-    <ul class="tabs">
-      <li><button class="tab-button btn Questions">Questions I've Asked</button></li>
-      <li><button class="tab-button btn Answers">Answers I've Provided</button></li>
-      <li><button class="tab-button btn Comments">Comments I've Made</button></li>
-      <li><button class="tab-button btn Likes">Things I Like</button></li>
-    </ul>
-  </div>
 
-  <div id="center-profile-content">
-    <div class="tab-content" id="Questions">
-      <% @user.questions.each do |question| %>
-        <%= erb :'_question_list_item', locals: {question: question} %>
-      <%end%>
+    <div id="center-profile-buttons">
+      <ul class="tabs">
+        <li><button class="tab-button btn Questions btn-tab">Questions I've Asked</button></li>
+        <li><button class="tab-button btn Answers btn-tab">Answers I've Provided</button></li>
+        <li><button class="tab-button btn Comments btn-tab">Comments I've Made</button></li>
+        <li><button class="tab-button btn Likes btn-tab">Things I Like</button></li>
+      </ul>
     </div>
 
-    <div class="tab-content" id="Answers">
-      <% @user.answers.each do |answer| %>
-        <ul class="questions_list">
-          <li>
-            <div class="col-group home-questions">
-              <div class="col-1">
-                <div class="scores-wrap">
-                  <table class="scores">
-                      <tr>
-                        <td class="votes">
-                      <span><%=answer.votes.length%><span>
-                      <p>votes</p>
-                        </td>
-                        <td class="comments">
-                        <span><%=answer.comments.length%></span>
-                          <p>comments</p>
-                        </td>
-                      </tr>
-                  </table>
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="summery">
-                  <h3>Question: <a href="/questions/<%=answer.question.id%>"><%= answer.question.title%></a><h3>
-                  <h3>Answer: <%= answer.body %></h3>
-                </div>
-              </div>
-            </div>
-          </li>
-        <ul>
-      <% end %>
-    </div>
+    <div id="center-profile-content">
+      <div class="tab-content" id="Questions">
+        <% @user.questions.each do |question| %>
+          <%= erb :'_question_list_item', locals: {question: question} %>
+        <%end%>
+      </div>
 
-    <div class="tab-content" id="Comments">
-      <% @user.comments.each do |comment| %>
-        <ul class="questions_list">
-          <li>
-            <div class="col-group home-questions">
-              <div class="col-1">
-                <div class="scores-wrap">
-                  <table class="scores">
-                      <tr>
-                        <td class="votes">
-                      <span><%=comment.votes.length%><span>
-                      <p>votes</p>
-                        </td>
-                      </tr>
-                  </table>
+      <div class="tab-content" id="Answers">
+        <% @user.answers.each do |answer| %>
+          <ul class="questions_list">
+            <li>
+              <div class="col-group home-questions">
+                <div class="col-1">
+                  <div class="scores-wrap">
+                    <table class="scores">
+                        <tr>
+                          <td class="votes">
+                        <span><%=answer.votes.length%><span>
+                        <p>votes</p>
+                          </td>
+                          <td class="comments">
+                          <span><%=answer.comments.length%></span>
+                            <p>comments</p>
+                          </td>
+                        </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-2">
+                  <div class="summery">
+                    <h3>Question: <a href="/questions/<%=answer.question.id%>"><%= answer.question.title%></a><h3>
+                    <h3>Answer: <%= answer.body %></h3>
+                  </div>
                 </div>
               </div>
-              <div class="col-2">
-                <div class="summery">
-                  <% if comment.commentable_type == "Question" %>
-                    <h3>Commented on a Question!</h3>
-                    <h3>Question: <a href="/questions/<%= comment.commentable_id %>"><%= Question.find(comment.commentable_id).title %></a> </h3>
-                      <h3>
-                    <h5>Asked by: <%= User.find(Question.find(comment.commentable_id).user_id).name %> </h5>
-                    <h3>My Comment: <%= comment.body %></h3>
-                  <% elsif comment.commentable_type == "Answer" %>
-                    <h3>Commented on an Answer!</h3>
-                    <% a = Answer.find(comment.commentable_id) %>
-                    <h3>Question: <a href="/questions/<%= a.question.id %>"><%= a.question.title %></a> </h3>
-                      <h3>
-                    <h5>Asked by: <%= User.find(a.question.user_id).name %> </h5>
-                    <h3>Answer: <%= a.body %></a> </h3>
-                    <h5>Answered by: <%= User.find(a.user_id).name %> </h5>
-                    <h3>My Comment: <%= comment.body %></h3>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </li>
-        <ul>
-      <% end %>
-    </div>
+            </li>
+          <ul>
+        <% end %>
+      </div>
 
-    <div class="tab-content" id="Likes">
-      <div class="col-group home-questions">
-        <% @user.votes.each do |vote| %>
-          <div class="summery">
-            <% if vote.votable_type == "Question" %>
-              <h3>Liked a Question!</h3>
-              <h3>Question: <a href="/questions/<%= vote.votable_id %>"><%= Question.find(vote.votable_id).title %></a> </h3>
-                <h3>
-              <h5>Asked by: <%= User.find(Question.find(vote.votable_id).user_id).name %> </h5>
-            <% elsif vote.votable_type == "Answer" %>
-              <h3>Liked an Answer!</h3>
-              <% a = Answer.find(vote.votable_id) %>
-              <h3>Question: <a href="/questions/<%= a.question.id %>"><%= a.question.title %></a> </h3>
-                <h3>
-              <h5>Asked by: <%= User.find(a.question.user_id).name %> </h5>
-              <h3>Answer: <%= a.body %></a> </h3>
-              <h5>Answered by: <%= User.find(a.user_id).name %> </h5>
-            <% elsif vote.votable_type == "Comment" %>
-              <% c = Comment.find(vote.votable_id) %>
-              <% if c.commentable_type == "Question" %>
-                <h3>Liked a Comment on a Question!</h3>
-                <h3>Question: <a href="/questions/<%= c.commentable_id %>"><%= Question.find(c.commentable_id).title %></a> </h3>
-                <h5>Asked by: <%= User.find(Question.find(c.commentable_id).user_id).name %> </h5>
-                <h3>Comment: <%= c.body %></a> </h3>
-                <h5>Asked by: <%= User.find(c.user_id).name %> </h5>
-              <% elsif c.commentable_type == "Answer" %>
-                <h3>Liked a Comment on an Answer to a Question!</h3>
-                <% a = Answer.find(c.commentable_id) %>
+      <div class="tab-content" id="Comments">
+        <% @user.comments.each do |comment| %>
+          <ul class="questions_list">
+            <li>
+              <div class="col-group home-questions">
+                <div class="col-1">
+                  <div class="scores-wrap">
+                    <table class="scores">
+                        <tr>
+                          <td class="votes">
+                        <span><%=comment.votes.length%><span>
+                        <p>votes</p>
+                          </td>
+                        </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-2">
+                  <div class="summery">
+                    <% if comment.commentable_type == "Question" %>
+                      <h3>Commented on a Question!</h3>
+                      <h3>Question: <a href="/questions/<%= comment.commentable_id %>"><%= Question.find(comment.commentable_id).title %></a> </h3>
+                        <h3>
+                      <h5>Asked by: <%= User.find(Question.find(comment.commentable_id).user_id).name %> </h5>
+                      <h3>My Comment: <%= comment.body %></h3>
+                    <% elsif comment.commentable_type == "Answer" %>
+                      <h3>Commented on an Answer!</h3>
+                      <% a = Answer.find(comment.commentable_id) %>
+                      <h3>Question: <a href="/questions/<%= a.question.id %>"><%= a.question.title %></a> </h3>
+                        <h3>
+                      <h5>Asked by: <%= User.find(a.question.user_id).name %> </h5>
+                      <h3>Answer: <%= a.body %></a> </h3>
+                      <h5>Answered by: <%= User.find(a.user_id).name %> </h5>
+                      <h3>My Comment: <%= comment.body %></h3>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <ul>
+        <% end %>
+      </div>
+
+      <div class="tab-content" id="Likes">
+        <div class="col-group home-questions">
+          <% @user.votes.each do |vote| %>
+            <div class="summery">
+              <% if vote.votable_type == "Question" %>
+                <h3>Liked a Question!</h3>
+                <h3>Question: <a href="/questions/<%= vote.votable_id %>"><%= Question.find(vote.votable_id).title %></a> </h3>
+                  <h3>
+                <h5>Asked by: <%= User.find(Question.find(vote.votable_id).user_id).name %> </h5>
+              <% elsif vote.votable_type == "Answer" %>
+                <h3>Liked an Answer!</h3>
+                <% a = Answer.find(vote.votable_id) %>
                 <h3>Question: <a href="/questions/<%= a.question.id %>"><%= a.question.title %></a> </h3>
+                  <h3>
                 <h5>Asked by: <%= User.find(a.question.user_id).name %> </h5>
                 <h3>Answer: <%= a.body %></a> </h3>
                 <h5>Answered by: <%= User.find(a.user_id).name %> </h5>
-                <h3>Comment: <%= c.body %></a> </h3>
-                <h5>Asked by: <%= User.find(c.user_id).name %> </h5>
+              <% elsif vote.votable_type == "Comment" %>
+                <% c = Comment.find(vote.votable_id) %>
+                <% if c.commentable_type == "Question" %>
+                  <h3>Liked a Comment on a Question!</h3>
+                  <h3>Question: <a href="/questions/<%= c.commentable_id %>"><%= Question.find(c.commentable_id).title %></a> </h3>
+                  <h5>Asked by: <%= User.find(Question.find(c.commentable_id).user_id).name %> </h5>
+                  <h3>Comment: <%= c.body %></a> </h3>
+                  <h5>Asked by: <%= User.find(c.user_id).name %> </h5>
+                <% elsif c.commentable_type == "Answer" %>
+                  <h3>Liked a Comment on an Answer to a Question!</h3>
+                  <% a = Answer.find(c.commentable_id) %>
+                  <h3>Question: <a href="/questions/<%= a.question.id %>"><%= a.question.title %></a> </h3>
+                  <h5>Asked by: <%= User.find(a.question.user_id).name %> </h5>
+                  <h3>Answer: <%= a.body %></a> </h3>
+                  <h5>Answered by: <%= User.find(a.user_id).name %> </h5>
+                  <h3>Comment: <%= c.body %></a> </h3>
+                  <h5>Asked by: <%= User.find(c.user_id).name %> </h5>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
-        <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
+
   </div>
 
 </div>

@@ -1,9 +1,12 @@
+
         <div class="comment-body">
           <p> <%= c.body %></p>
           <div class="author">
           <em>Author: <%= User.find(c.user_id).name %></em>
         </div>
-
-           Votes: <%= c.votes.length %>
-           <%= erb :'/_votes_form', locals:{votable: c}%>
+         </div>
+         <div class="vote-count">
+           <span class="votes"><%= c.votes.length %>
+           <%= erb :'/_votes_form', locals:{votable: c}%></span>
+           <p>Votes</p>
          </div>
