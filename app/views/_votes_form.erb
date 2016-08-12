@@ -1,6 +1,4 @@
 
-    <% p "HERE HERE HERE HERE !!!!!!!!!!!!!!!!!!!!!!" %>
-    <% p votable.class %>
     <form class="votes-form" action="/votes" method="POST">
       <input id="votable_id" type="hidden" name="vote[votable_id]" value="<%= votable.id %>">
       <input id="votable_type" type="hidden" name="vote[votable_type]" value="<%= votable.class %>">
