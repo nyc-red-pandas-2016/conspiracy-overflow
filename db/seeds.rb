@@ -24,3 +24,18 @@ q.comments << c
 a.comments << Comment.new({user_id: 4, body: "I am at home."})
 
 c.votes << Vote.new({user_id: 1})
+
+q = Question.new({title: "Do you think roller skates?", body: "I sometimes think roller skates, but not all the time."})
+q.title.downcase!
+q.tags << Tag.new({name: "yaknow"})
+q.tags << Tag.new({name: "rollerbladeorskates?"})
+elizabeth.questions << q
+q.answers << Answer.new({user_id: 4, body: "I always think that."})
+q.comments << Comment.new({user_id: 2, body: "I don't even know where I am"})
+
+q = Question.new({title: "Why?", body: "Really tho."})
+q.title.downcase!
+dave.questions << q
+a = Answer.new({user_id: 3, body: "Dave you're drunk"})
+q.answers << a
+a.comments << Comment.new({user_id: 2, body: "Wolfgang you're drunk too"})

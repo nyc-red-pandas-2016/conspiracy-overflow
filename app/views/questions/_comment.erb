@@ -4,6 +4,6 @@
           <em>Author: <%= User.find(c.user_id).name %></em>
         </div>
 
-           Votes: <%= c.votes.length %>
+           Votes: <div class="votes-number-Comment-<%= c.id %>"><%= c.votes.length %></div>
            <%= erb :'/_votes_form', locals:{votable: c}%>
          </div>
