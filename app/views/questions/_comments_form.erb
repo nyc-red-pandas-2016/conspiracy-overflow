@@ -4,8 +4,7 @@
         <input type="hidden" name="comment[commentable_id]" value="<%= commentable.id %>">
         <input type="hidden" name="comment[commentable_type]" value="<%= commentable.class %>">
         <input type="hidden" name="question_id" value="<%= question_id %>">
-        <input type="submit" name="comment-button" value="Submit">
+        <input class="btn btn-white" type="submit" name="comment-button" value="Submit">
      </form>
-
-       <button class="show-comments-form-button">Comment</button>
+     <button class="show-comments-form-button btn btn-white">Comment</button>
     <% end %>

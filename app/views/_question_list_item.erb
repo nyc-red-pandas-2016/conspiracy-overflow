@@ -23,7 +23,7 @@
           <div class="listed_tags">
             <ul>
               <% question.tags.each do |tag| %>
-                <li><%=tag.name%></li>
+                <li><a href="/tags/questions/<%= tag.id%>"><%=tag.name%></a></li>
               <%end%>
             </ul>
           </div>

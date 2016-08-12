@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
   var $errorsRegister = $("#registration-errors");
   $errorsRegister.hide()
 
@@ -60,10 +61,13 @@ $(document).ready(function() {
       }
     }
   });
-
-  $( ".tab-button" ).click(function(event) {
+     var $tabs = $(".tab-button");
+     $tabs.eq(0).addClass("active");
+     $tabs.click(function(event) {
     $( ".tab-content" ).hide();
     event.preventDefault();
+      $tabs.removeClass("active");
+    $(this).addClass("active");
     id_to_show = event.target.classList[2];
     $( "#" + id_to_show).show();
   });

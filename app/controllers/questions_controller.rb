@@ -6,6 +6,11 @@ get '/questions/new' do
   end
 end
 
+get '/tags/questions/:tag' do
+  @questions = Tag.find(params[:tag]).questions
+  erb :'index'
+end
+
 post '/questions' do
   q = Question.new(params[:question])
   q.title.downcase!
