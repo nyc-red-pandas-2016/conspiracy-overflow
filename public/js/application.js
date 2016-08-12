@@ -50,9 +50,6 @@ $(document).ready(function() {
     if (title.length < 3) {
       errors.push('<li>Title too short.</li>');
     }
-    if (body.length < 3) {
-      errors.push('<li>Text too short.</li>');
-    }
 
     if (errors.length > 0) {
       event.preventDefault();
