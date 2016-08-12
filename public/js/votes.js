@@ -20,15 +20,14 @@ $(document).ready(function() {
   //   });
   // });
 
-
   $(".question").on("submit", ".votes-form", function(e) {
-    if ($(this).parent().attr("class") != 'comment-body') {
+    if ($(this).parent().parent().parent().attr("class") != 'comment-body') {
       votesFunction(e, $(this));
     }
   });
 
   $(".answers").on("submit", ".votes-form", function(e) {
-    if ($(this).parent().attr("class") != 'comment-body') {
+    if ($(this).parent().parent().parent().attr("class") != 'comment-body') {
       votesFunction(e, $(this));
     }
   });

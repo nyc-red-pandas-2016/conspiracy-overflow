@@ -7,7 +7,6 @@
 <div class="contain">
   <div id="user_profile">
 
-
     <div id="center-profile-buttons">
       <ul class="tabs">
         <li><button class="tab-button btn Questions btn-tab">Questions I've Asked</button></li>
@@ -67,7 +66,7 @@
                     <table class="scores">
                         <tr>
                           <td class="votes">
-                        <span><%=comment.votes.length%><span>
+                        <span><%=comment.votes.length%></span>
                         <p>votes</p>
                           </td>
                         </tr>
@@ -79,14 +78,13 @@
                     <% if comment.commentable_type == "Question" %>
                       <h3>Commented on a Question!</h3>
                       <h3>Question: <a href="/questions/<%= comment.commentable_id %>"><%= Question.find(comment.commentable_id).title %></a> </h3>
-                        <h3>
+
                       <h5>Asked by: <%= User.find(Question.find(comment.commentable_id).user_id).name %> </h5>
                       <h3>My Comment: <%= comment.body %></h3>
                     <% elsif comment.commentable_type == "Answer" %>
                       <h3>Commented on an Answer!</h3>
                       <% a = Answer.find(comment.commentable_id) %>
                       <h3>Question: <a href="/questions/<%= a.question.id %>"><%= a.question.title %></a> </h3>
-                        <h3>
                       <h5>Asked by: <%= User.find(a.question.user_id).name %> </h5>
                       <h3>Answer: <%= a.body %></a> </h3>
                       <h5>Answered by: <%= User.find(a.user_id).name %> </h5>
@@ -95,6 +93,7 @@
                   </div>
                 </div>
               </div>
+            </div>
             </li>
           <ul>
         <% end %>
@@ -107,15 +106,13 @@
               <% if vote.votable_type == "Question" %>
                 <h3>Liked a Question!</h3>
                 <h3>Question: <a href="/questions/<%= vote.votable_id %>"><%= Question.find(vote.votable_id).title %></a> </h3>
-                  <h3>
                 <h5>Asked by: <%= User.find(Question.find(vote.votable_id).user_id).name %> </h5>
               <% elsif vote.votable_type == "Answer" %>
                 <h3>Liked an Answer!</h3>
                 <% a = Answer.find(vote.votable_id) %>
                 <h3>Question: <a href="/questions/<%= a.question.id %>"><%= a.question.title %></a> </h3>
-                  <h3>
                 <h5>Asked by: <%= User.find(a.question.user_id).name %> </h5>
-                <h3>Answer: <%= a.body %></a> </h3>
+                <h3>Answer: <%= a.body %> </h3>
                 <h5>Answered by: <%= User.find(a.user_id).name %> </h5>
               <% elsif vote.votable_type == "Comment" %>
                 <% c = Comment.find(vote.votable_id) %>
@@ -123,16 +120,16 @@
                   <h3>Liked a Comment on a Question!</h3>
                   <h3>Question: <a href="/questions/<%= c.commentable_id %>"><%= Question.find(c.commentable_id).title %></a> </h3>
                   <h5>Asked by: <%= User.find(Question.find(c.commentable_id).user_id).name %> </h5>
-                  <h3>Comment: <%= c.body %></a> </h3>
+                  <h3>Comment: <%= c.body %> </h3>
                   <h5>Asked by: <%= User.find(c.user_id).name %> </h5>
                 <% elsif c.commentable_type == "Answer" %>
                   <h3>Liked a Comment on an Answer to a Question!</h3>
                   <% a = Answer.find(c.commentable_id) %>
                   <h3>Question: <a href="/questions/<%= a.question.id %>"><%= a.question.title %></a> </h3>
                   <h5>Asked by: <%= User.find(a.question.user_id).name %> </h5>
-                  <h3>Answer: <%= a.body %></a> </h3>
+                  <h3>Answer: <%= a.body %> </h3>
                   <h5>Answered by: <%= User.find(a.user_id).name %> </h5>
-                  <h3>Comment: <%= c.body %></a> </h3>
+                  <h3>Comment: <%= c.body %> </h3>
                   <h5>Asked by: <%= User.find(c.user_id).name %> </h5>
                 <% end %>
               <% end %>
@@ -143,5 +140,4 @@
     </div>
 
   </div>
-
 </div>
