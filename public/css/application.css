@@ -241,7 +241,11 @@ ul{
 .comments-title {
     color: #666;
 }
+.comment-wrap{
+  position:relative;
+}
 .comment-body {
+  border-bottom:1px solid #e4e49c;
     position: relative;
     background-color: #fdfdb4;
     border-left: 4px solid #e4e49c;

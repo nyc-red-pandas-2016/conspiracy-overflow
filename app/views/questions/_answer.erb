@@ -6,19 +6,21 @@
           </div>
           <!-- form to comment on answer -->
           <%= erb :'/questions/_comments_form', locals:{commentable: a, question_id: a.question.id}%>
-          <%= erb :'/_votes_form', locals:{votable: a}%>
-          <!-- comment on answer -->
+
+  <!-- comment on answer -->
           <div class="answer-comments">
-            <!-- <h4 class="comments-title">Comments</h4> -->
+            <h4 class="comments-title">Comments</h4>
             <div class="all_comments">
-              <% a.comments.each do |c| %>
+            <% a.comments.each do |c| %>
               <%= erb :'/questions/_comment', locals:{c: c}%>
-              <% end %>
+            <% end %>
             </div>
           </div>
         </div>
       <div class="vote-count">
-        <span class="votes"><%= @question.votes.length %></span><%= erb :'/_votes_form', locals:{votable: @question}%>
+        <span class="votes"><div class="votes-number-Answer-<%= a.id %>"><%= a.votes.length %></div>
+          <%= erb :'/_votes_form', locals:{votable: a}%>
+          <span>
         <p>Vote</p>
       </div>
     </div>

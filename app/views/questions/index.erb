@@ -1,6 +1,7 @@
 <div class="contain">
 <!-- question -->
     <div class="question">
+
       <div class="question-inner">
         <h2 class="question-title show"><%= @question.title %></h2>
         <div class="question-body">
@@ -9,13 +10,14 @@
             <em>Author: <%= @author.name %></em>
           </div>
           <!-- FORM FOR CREATED NEW ANSWERS WILL GO HERE -->
-          <%= erb :'/questions/_answers_form', locals:{question: @question}%>
-          <!-- FORM FOR COMMENTS WILL GO HERE -->
-          <%= erb :'/questions/_comments_form', locals:{commentable: @question, question_id: @question.id}%>
+          <% if current_user %>
+            <%= erb :'/questions/_answers_form', locals:{question: @question}%>
+            <%= erb :'/questions/_comments_form', locals:{commentable: @question, question_id: @question.id}%>
+          <% end %>
+
         </div>
         <div class="question-comments">
 
-          <!-- <h4 class="comments-title">Comments</h4> -->
           <div class="all_comments">
             <% @question.comments.each do |c| %>
             <%= erb :'/questions/_comment', locals:{c: c}%>
@@ -24,7 +26,7 @@
         </div>
       </div>
       <div class="vote-count">
-        <span class="votes"><%= @question.votes.length %></span><%= erb :'/_votes_form', locals:{votable: @question}%>
+        <span class="votes"><div class="votes-number-Question-<%= @question.id %>"><%= @question.votes.length %></div><%= erb :'/_votes_form', locals:{votable: @question}%></span>
         <p>Vote</p>
       </div>
       <!-- comment on questions  -->
