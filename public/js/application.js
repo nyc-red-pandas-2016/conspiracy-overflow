@@ -44,9 +44,9 @@ $(document).ready(function() {
 
     var errors = new Array();
     var title = $( "input[id=title]" ).val();
-    var body = $( "input[id=body]" ).val();
+    var body = $( "textarea[id=body]" ).text();
     var tags = $( "input[id=tags]" ).val();
-
+    // debugger;
     if (title.length < 3) {
       errors.push('<li>Title too short.</li>');
     }
