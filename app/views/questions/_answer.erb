@@ -10,7 +10,7 @@
           <!-- form to comment on answer -->
           <%= erb :'/questions/_comments_form', locals:{commentable: a, question_id: a.question.id}%>
 
-        <% if a.question.best_answer_id == nil && current_user.id == a.question.user_id %>
+        <% if current_user && a.question.best_answer_id == nil && current_user.id == a.question.user_id %>
             <form class="best-answer-form" action="/questions/best-answer" method="POST">
             <input type="hidden" name="answerid" value="<%= a.id %>">
             <button type="submit" name="best-answer" value="best-answer" class="btn btn-white">Declare Best Answer</button>
