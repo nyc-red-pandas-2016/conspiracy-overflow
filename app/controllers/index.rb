@@ -56,3 +56,5 @@ post '/votes' do
     votable.votes.length.to_s
   end
 end
+
+
